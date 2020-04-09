@@ -14,7 +14,7 @@ if [ $(id -u) -eq 0 ]; then
       exit 1
   else
   pass=$(perl -e 'print crypt($ARGV[0], "password")' "${password}")
-      useradd -m -p "${pass}" "${username}"
+      useradd -m -p "${pass}" "${username}" --groups extusers
       [ $? -eq 0 ] && echo "User has been added to system!" || echo "Failed to add a user!"
   fi
 else
